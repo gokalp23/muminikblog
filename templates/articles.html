@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h3>Makaleler</h3>
+<hr>
+{% if articles  %}
+<form action="/search" method="post">
+    <div class="input-group stylish-input-group col-md-6">
+        <input type="text" name="keyword" class="form-control" placeholder="Makale Başlığı Arayın..." >
+        <span class="input-group-addon">
+            <button type="submit" class="btn btn-success">
+                Ara
+            </button>  
+        </span>
+    </div>
+</form>
+
+<hr>
+<ul class="list-group">
+  {% for item in articles  %}
+  <li class="list-group-item"><a href="/article/{{item.Id}}"><strong>{{item.Title}}</strong></a> || <span>Yazar: {{item.Author}}</span></li>
+  {% endfor %}    
+</ul>
+{% else %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Veritabanında makale bulunmuyor...</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+
+{% endblock body %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% if article  %}
+<h4>{{article.Title}}</h4>
+<hr>
+<p>{{article.Content|safe}}</p>
+<hr>
+<small>Yazar: {{article.Author}}</small>
+<hr>
+<small>Tarih: {{article.Created_Date}}</small>
+{% else %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Böyle bir makale yok...</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+
+{% endblock body %}
